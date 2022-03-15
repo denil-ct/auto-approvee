@@ -43,7 +43,7 @@ function run() {
         const pullNumber = parseInt(core.getInput('pull-number'), 10);
         const token = core.getInput('token');
         const octokit = github.getOctokit(token);
-        if (pullNumber != NaN) {
+        if (!Number.isNaN(pullNumber)) {
             try {
                 yield octokit.pulls.createReview({
                     owner: github.context.repo.owner,
